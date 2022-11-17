@@ -11,8 +11,6 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import com.example.sonarqube.issues.*;
-
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
