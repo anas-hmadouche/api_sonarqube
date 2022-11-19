@@ -1,6 +1,7 @@
 package com.example.sonarqube.service;
 
 import com.example.sonarqube.entities.Issue;
+import com.example.sonarqube.entities.Parameters;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,12 +14,12 @@ public class IssueService {
     public IssueService() {
     }
 
-    public Issue getIssue(String url) throws ParseException {
+    public Issue getIssue(Parameters param) throws ParseException {
 
         Issue issue;
 
         RestTemplate restTemplate = new RestTemplate();
-        String resultat = restTemplate.getForObject(url, String.class);
+        String resultat = restTemplate.getForObject(param.toString(), String.class);
 
         issue = new Issue();
 
@@ -36,6 +37,10 @@ public class IssueService {
         issue.setType((String) issueObj.get("type"));
         issue.setScope((String) issueObj.get("scope"));
         issue.setEffortTotal(String.valueOf(jsonO.get("effortTotal")));
+        issue.setPosition(param.getPosition());
+        issue.setPositionColonne(param.getPositionColonne());
+        System.out.println(".........................................................................");
+        System.out.println(issue);
 
         return issue;
 
