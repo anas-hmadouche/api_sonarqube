@@ -12,6 +12,4 @@ public interface Iissues {
 
     public void setParameters(Parameters parameters);
 
-    Issue getIssue() throws ParseException;
-
 }

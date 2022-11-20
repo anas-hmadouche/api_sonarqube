@@ -1,7 +1,11 @@
 package com.example.sonarqube;
 
+import com.example.sonarqube.export.JobExportExcel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.mongodb.DB;
@@ -10,33 +14,35 @@ import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.util.JSON;
 
+import java.text.ParseException;
+
 @SpringBootApplication
 public class SonarqubeApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SchedulerException, ParseException {
 
         SpringApplication.run(SonarqubeApplication.class, args);
 
-        /*try {
+        SchedulerFactory sf = new StdSchedulerFactory(); // implementation instantiation of StdSchedulerFactory
+        Scheduler scheduler = sf.getScheduler();
 
-            Mongo mongo = new Mongo("127.0.0.1", 27017);
-            DB db = mongo.getDB("dbname");
-            DBCollection collection = db.getCollection("dummyColl");
+        //? The newJob() method is a factory to create an instance of type JobBuilder.
+        //? All you have to do is invoke the different methods to configure the builder
+        //? and invoke its build() method to obtain the corresponding instance.
+        //? LDAPQueryJob is the class job that implement job
+        JobDetail detail = JobBuilder.newJob(JobExportExcel.class).withIdentity("exportexcel").build();
 
-            // convert JSON to DBObject directly
+        //?create an instance of trigger and use the different setters to configure the instance
+        CronTriggerImpl trigger = new CronTriggerImpl();
+        trigger.setCronExpression("0 * * ? * *");
+        trigger.setName("Daily 2 minute trigger");
 
-            String json =
-                "{\"colorName\" : \"red\",\"hexValue\" : \"#f00\"}";
+        //?Save the job schedule with the trigger provided as parameters
+        scheduler.scheduleJob(detail, trigger);
 
-            DBObject obj = (DBObject) JSON.parse(json);
+        //?Start the scheduler
+        scheduler.start();
 
-            collection.insert(obj);
-
-            System.out.println("Done");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
 

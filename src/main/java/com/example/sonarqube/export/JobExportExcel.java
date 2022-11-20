@@ -27,16 +27,13 @@ public class JobExportExcel implements Job {
         try {
             MapIssueParams mapIssueParams = new MapIssueParams();
             List<Issue> issueList=new ArrayList<>();
-
-            Gson gson = new Gson();
-            //String jsonArray = gson.toJson(mapIssueParams.listIissues);
+            // Récupérer le chemin du fichier data.json
             File currentDirFile = new File(".");
             String helper = currentDirFile.getAbsolutePath();
             String res = mapIssueParams.readJsonFromFile(helper + "\\config\\data.json");
+            // convertir le contenu json à une liste des paramètres
             List<Parameters> paramsList = mapIssueParams.convert(res);
-            paramsList.forEach(System.out::println);
-            //System.out.println("paramsList="+res);
-            //System.out.println(jsonArray);
+
             IssueService issueService=new IssueService();
             paramsList.stream().map((param)->{
                 try {

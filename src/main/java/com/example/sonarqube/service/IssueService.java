@@ -16,27 +16,27 @@ public class IssueService {
 
     public Issue getIssue(Parameters param) throws ParseException {
 
-        Issue issue;
-
         RestTemplate restTemplate = new RestTemplate();
         String resultat = restTemplate.getForObject(param.toString(), String.class);
 
-        issue = new Issue();
+        Issue issue = new Issue();
 
+        // Transformer le resultat en format Json
         JSONParser jsonP = new JSONParser();
-        JSONObject jsonO = (JSONObject) jsonP.parse(resultat);
-        if(String.valueOf(jsonO.get("total")).equals("0"))
+        JSONObject jsonObject = (JSONObject) jsonP.parse(resultat);
+        //
+        if(String.valueOf(jsonObject.get("total")).equals("0"))
             return null;
-        issue.setTotal(String.valueOf(jsonO.get("total")));
-        JSONArray jsonA = (JSONArray) jsonO.get("issues");
-        JSONObject issueObj = (JSONObject) jsonA.get(0);
+        issue.setTotal(String.valueOf(jsonObject.get("total")));
+        JSONArray jsonArray = (JSONArray) jsonObject.get("issues");
+        JSONObject issueObj = (JSONObject) jsonArray.get(0);
         issue.setId((String) issueObj.get("key"));
         issue.setSeverity((String) issueObj.get("severity"));
         issue.setCreationDate((String) issueObj.get("creationDate"));
         issue.setUpdateDate((String) issueObj.get("updateDate"));
         issue.setType((String) issueObj.get("type"));
         issue.setScope((String) issueObj.get("scope"));
-        issue.setEffortTotal(String.valueOf(jsonO.get("effortTotal")));
+        issue.setEffortTotal(String.valueOf(jsonObject.get("effortTotal")));
         issue.setPosition(param.getPosition());
         issue.setPositionColonne(param.getPositionColonne());
         System.out.println(".........................................................................");
