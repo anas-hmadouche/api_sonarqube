@@ -8,19 +8,19 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor @NoArgsConstructor @ToString
-@Document(collection = "issues")
+@Document(collection = "Issue")
 public class Issue {
 
-    @Id
-    private String id;
+    private String key;
     private  String severity;
-    private  String creationDate;
-    private  String updateDate;
     private  String type;
     private  String scope;
     private  String total;
+    private List<IssueDetails> issueDetails;
     private String effortTotal;
     @JsonIgnore
     private int position;

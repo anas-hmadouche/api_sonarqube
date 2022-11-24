@@ -1,27 +1,68 @@
 package com.example.sonarqube.controller;
 
-import com.example.sonarqube.service.InvokeExcel;
-import com.example.sonarqube.service.MapIssueParams;
-import org.json.simple.parser.ParseException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.sonarqube.entities.Issue;
+import com.example.sonarqube.service.ExposeListIssues;
+import com.example.sonarqube.service.IssuePersistentService;
+import com.example.sonarqube.view.IssueView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class IssueController {
 
-    @GetMapping("/bugCritical")
-    public String bugCriticalController() throws ParseException, IOException {
+    @Autowired
+    private ExposeListIssues exposeListIssues;
 
-        MapIssueParams mapIssueParams = new MapIssueParams();
 
-        InvokeExcel invokeExcel = new InvokeExcel();
+    @Autowired
+    private IssuePersistentService issuePersistentService;
 
-        /*return invokeExcel.exportToExcel(mapIssueParams.mapIssue(10, "CODE_SMELL", "MAJOR",
-                "2022-09-01", "cardamom:mmg:github:develop", "false"));*/
-        return null;
+    @GetMapping("/api/issues")
+    public List<Issue> getAllIssues()  {
+
+        return exposeListIssues.getIssues();
 
     }
+    @GetMapping("/api/insertIssues")
+    public void insertIssues(){
+        List<Issue> issues = getAllIssues();
+        issues.forEach(issuePersistentService::ajouterIssue);
+    }
+
+    @GetMapping("/api/findAll")
+    public List<Issue> fetchAllIssues(){
+        return issuePersistentService.getAllIssues();
+    }
+
+    @GetMapping("/api/findIssueViewAll")
+    public List<IssueView> fetchAllIssueViews(){
+        return issuePersistentService.getAllIssueViews();
+    }
+/*
+/*
+    @GetMapping("/{firstName}")
+    public List<com.cogigroup.gestionproduits.Student> fetchStudentByFirstNam(@PathVariable(value = "firstName") String f) {
+        return studentService.fetchStudentByFirstName(f);
+    }*/
+
+    /*@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public com.cogigroup.gestionproduits.Student addStudent(@RequestBody com.cogigroup.gestionproduits.Student student) {
+        return studentService.ajouterStudent(student);
+    }
+
+    @PutMapping(value = "/{email}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<com.cogigroup.gestionproduits.Student> updateStudents(@PathVariable(value = "email") String email ,
+                                                                                @RequestBody com.cogigroup.gestionproduits.Student studentsDetails)
+            throws ResourceNotFoundException {
+        studentsDetails.setEmail(email);
+        final com.cogigroup.gestionproduits.Student updateStudent=studentService.editStudent(email,studentsDetails);
+
+        return ResponseEntity.ok(updateStudent);
+    }*/
 
 }
