@@ -21,7 +21,6 @@ public class Issue {
     private  String scope;
     private  String total;
     private List<IssueDetails> issueDetails;
-    private String effortTotal;
     @JsonIgnore
     private int position;
     @JsonIgnore

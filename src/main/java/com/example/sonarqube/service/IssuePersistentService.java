@@ -27,9 +27,9 @@ public class IssuePersistentService {
         return issueViewRepository.findAllIssueView();
     }
 
-   /* public List<Issue> fetchIssueByFirstName(String f) {
-        return issueRepository.findIssueByFirstName(f);
-    }*/
+   public List<Issue> fetchIssueByKey(String key) {
+        return issueRepository.findIssueByKey(key);
+    }
 
     public Issue ajouterIssue(Issue issue) {
         return issueRepository.insert(issue);

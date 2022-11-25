@@ -10,9 +10,11 @@ import java.util.Optional;
 @Repository
 public interface IssueRepository extends MongoRepository<Issue, String> {
 
+    List<Issue> findIssueByKey(String key);
+
    /* Optional<Issue> findIssueByEmail(String email);
 
-    List<Issue> findIssueByFirstName(String firstName);
+    List<Issue> findIssueByKey(String key);
 
     Issue insert(Issue student);
 

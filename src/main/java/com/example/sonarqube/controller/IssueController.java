@@ -1,6 +1,7 @@
 package com.example.sonarqube.controller;
 
 import com.example.sonarqube.entities.Issue;
+import com.example.sonarqube.entities.IssueDetails;
 import com.example.sonarqube.service.ExposeListIssues;
 import com.example.sonarqube.service.IssuePersistentService;
 import com.example.sonarqube.view.IssueView;
@@ -43,12 +44,17 @@ public class IssueController {
     public List<IssueView> fetchAllIssueViews(){
         return issuePersistentService.getAllIssueViews();
     }
-/*
-/*
-    @GetMapping("/{firstName}")
-    public List<com.cogigroup.gestionproduits.Student> fetchStudentByFirstNam(@PathVariable(value = "firstName") String f) {
-        return studentService.fetchStudentByFirstName(f);
-    }*/
+
+
+    @GetMapping("/api/findIssueByKey/{key}")
+    public List<IssueDetails> fetchIssueByKey(@PathVariable(value = "key") String key) {
+
+        return issuePersistentService.fetchIssueByKey(key).get(0).getIssueDetails();
+    }
+
+    /*
+
+
 
     /*@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public com.cogigroup.gestionproduits.Student addStudent(@RequestBody com.cogigroup.gestionproduits.Student student) {

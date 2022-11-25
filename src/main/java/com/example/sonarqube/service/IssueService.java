@@ -40,7 +40,6 @@ public class IssueService {
         issue.setSeverity((String) issueObj.get("severity"));
         issue.setType((String) issueObj.get("type"));
         issue.setScope((String) issueObj.get("scope"));
-        issue.setEffortTotal(String.valueOf(jsonObject.get("effortTotal")));
         issue.setPosition(param.getPosition());
         issue.setPositionColonne(param.getPositionColonne());
         System.out.println(".........................................................................");
