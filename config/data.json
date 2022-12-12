@@ -1,6 +1,5 @@
 [
   {
-    
       "types":"types=BUG",
       "severities":"&severities=CRITICAL",
       "createdBefore":"&createdBefore=2022-09-01",
@@ -87,7 +86,7 @@
   {
       "types":"types=BUG",
       "severities":"&severities=CRITICAL",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -99,7 +98,7 @@
   {
       "types":"types=BUG",
       "severities":"&severities=MAJOR",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -111,7 +110,7 @@
   {
       "types":"types=BUG",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -123,7 +122,7 @@
   {
       "types":"types=VULNERABILITY",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -136,7 +135,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=CRITICAL",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -149,7 +148,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=MAJOR",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -162,7 +161,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-11-16",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -175,7 +174,7 @@
     
       "types":"types=BUG",
       "severities":"&severities=CRITICAL",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -188,7 +187,7 @@
     
       "types":"types=BUG",
       "severities":"&severities=MAJOR",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -201,7 +200,7 @@
     
       "types":"types=BUG",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -214,7 +213,7 @@
     
       "types":"types=VULNERABILITY",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -227,7 +226,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=CRITICAL",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -240,7 +239,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=MAJOR",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",
@@ -253,7 +252,7 @@
     
       "types":"types=CODE_SMELL",
       "severities":"&severities=BLOCKER",
-      "createdBefore":"&createdBefore=2022-10-31",
+      "createdBefore":"&createdBefore=2022-11-30",
       "createdAfter":"&createdAfter=2022-10-01",
       "statuses":"",
       "projectName":"&componentKeys=cardamom:mmg:github:develop",

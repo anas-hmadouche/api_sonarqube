@@ -6,10 +6,7 @@ import com.example.sonarqube.service.ExposeListIssues;
 import com.example.sonarqube.service.IssuePersistentService;
 import com.example.sonarqube.view.IssueView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -19,16 +16,14 @@ public class IssueController {
     @Autowired
     private ExposeListIssues exposeListIssues;
 
-
     @Autowired
     private IssuePersistentService issuePersistentService;
 
     @GetMapping("/api/issues")
     public List<Issue> getAllIssues()  {
-
         return exposeListIssues.getIssues();
-
     }
+
     @GetMapping("/api/insertIssues")
     public void insertIssues(){
         List<Issue> issues = getAllIssues();
@@ -45,30 +40,18 @@ public class IssueController {
         return issuePersistentService.getAllIssueViews();
     }
 
-
     @GetMapping("/api/findIssueByKey/{key}")
     public List<IssueDetails> fetchIssueByKey(@PathVariable(value = "key") String key) {
-
         return issuePersistentService.fetchIssueByKey(key).get(0).getIssueDetails();
     }
 
-    /*
-
-
-
-    /*@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public com.cogigroup.gestionproduits.Student addStudent(@RequestBody com.cogigroup.gestionproduits.Student student) {
-        return studentService.ajouterStudent(student);
+    @GetMapping("/api/fetchIssueByCreationDate/{creationDate}")
+    public List<Issue> fetchIssueByCreationDate(@PathVariable(value = "creationDate") String creationDate) {
+        return issuePersistentService.fetchIssueByCreationDate(creationDate);
     }
 
-    @PutMapping(value = "/{email}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<com.cogigroup.gestionproduits.Student> updateStudents(@PathVariable(value = "email") String email ,
-                                                                                @RequestBody com.cogigroup.gestionproduits.Student studentsDetails)
-            throws ResourceNotFoundException {
-        studentsDetails.setEmail(email);
-        final com.cogigroup.gestionproduits.Student updateStudent=studentService.editStudent(email,studentsDetails);
-
-        return ResponseEntity.ok(updateStudent);
-    }*/
-
+    @GetMapping("/api/fetchIssueByCreationDateBetween/{dateDebut}/{dateFin}")
+    public List<Issue> fetchIssueByCreationDateBetween(@PathVariable(value = "dateDebut") String dateDebut, @PathVariable(value = "dateFin") String dateFin) {
+        return issuePersistentService.fetchIssueByCreationDateBetween(dateDebut, dateFin);
+    }
 }

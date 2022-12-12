@@ -20,6 +20,7 @@ public class Issue {
     private  String type;
     private  String scope;
     private  String total;
+    private  String project;
     private List<IssueDetails> issueDetails;
     @JsonIgnore
     private int position;

@@ -4,41 +4,43 @@ import com.example.sonarqube.entities.Issue;
 import com.example.sonarqube.interfaces.IssueRepository;
 import com.example.sonarqube.interfaces.IssueViewRepository;
 import com.example.sonarqube.view.IssueView;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDate;
 import java.util.List;
-@AllArgsConstructor
+
 @Service
 public class IssuePersistentService {
+
     @Autowired
     private IssueRepository issueRepository;
 
     @Autowired
     private IssueViewRepository issueViewRepository;
 
-    public List<Issue> getAllIssues() {
+    public List<Issue> getAllIssues(){
         return issueRepository.findAll();
     }
-    public List<IssueView> getAllIssueViews() {
+
+    public List<IssueView> getAllIssueViews(){
         return issueViewRepository.findAllIssueView();
     }
 
-   public List<Issue> fetchIssueByKey(String key) {
-        return issueRepository.findIssueByKey(key);
-    }
-
-    public Issue ajouterIssue(Issue issue) {
+    public Issue ajouterIssue(Issue issue){
         return issueRepository.insert(issue);
     }
+    public List<Issue> fetchIssueByKey(String key){
+        return issueRepository.findIssueByKey(key);
+    }
+    public List<Issue> fetchIssueByCreationDate(String creationDate){
+        LocalDate date = LocalDate.parse(creationDate);
+        return issueRepository.findByIssueDetailsCreationDate(date);
+    }
+    public List<Issue> fetchIssueByCreationDateBetween(String dateDebut1, String dateFin1){
+        LocalDate dateDebut = LocalDate.parse(dateDebut1);
+        LocalDate dateFin = LocalDate.parse(dateFin1);
+        return issueRepository.findByIssueDetailsCreationDateBetween(dateDebut, dateFin);
+    }
 
-    /*public Issue editIssue(@PathVariable(value = "email") String email,
-                               @RequestBody Issue studentsDetails) {
-        studentsDetails.setEmail(email);
-        final Issue updatIssue = repository.save(studentsDetails);
-        return updatIssue;
-    }*/
 }

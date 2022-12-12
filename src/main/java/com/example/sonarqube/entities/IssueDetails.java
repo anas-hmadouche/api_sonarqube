@@ -5,13 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 @AllArgsConstructor @NoArgsConstructor @ToString
 public class IssueDetails {
     private  String line;
     private  String message;
     private  String component;
-    private  String creationDate;
-    private  String updateDate;
+    private  LocalDate creationDate;
+    private  LocalDate updateDate;
     private  String author;
 }

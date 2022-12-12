@@ -2,12 +2,10 @@ package com.example.sonarqube.export;
 
 import com.example.sonarqube.entities.Issue;
 import com.example.sonarqube.entities.Parameters;
-import com.example.sonarqube.interfaces.Iissues;
 import com.example.sonarqube.service.InvokeExcel;
+
 import com.example.sonarqube.service.IssueService;
 import com.example.sonarqube.service.MapIssueParams;
-
-import com.google.gson.Gson;
 import org.json.simple.parser.ParseException;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
