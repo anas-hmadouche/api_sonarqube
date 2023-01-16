@@ -42,7 +42,7 @@ public class PortfolioService {
         portfolio1.setName(name);
 
 
-        components.forEach(project1 -> {
+        /*components.forEach(project1 -> {
             JSONObject projectObj = (JSONObject) project1;
             String nameP = ((String) projectObj.get("name"));
             String key = ((String) projectObj.get("key"));
@@ -51,19 +51,23 @@ public class PortfolioService {
             System.out.println("********" + key + "********");
             Project project=new Project(nameP, key, refKey, qualifier);
             projects.add(project);
-        });
-        portfolio1.setProjects(projects);
-
-        return portfolio1;
+        });*/
+portfolio1.setProjects(projects);
+return portfolio1;
 
     }
 
-    public Portfolio savePortfolio(String portfolio) throws ParseException {
-        return portfolioRepository.save(this.getProjectsByPortfolio(portfolio));
+    public Portfolio savePortfolio(Portfolio portfolio) throws ParseException {
+        return portfolioRepository.save(portfolio);
 
     }
     public Portfolio findPortfolioByName(String name){
         return portfolioRepository.findPortfolioByName(name);
     }
+
+    public List<Portfolio> getAllPortfolios(){
+        return portfolioRepository.findAll();
+    }
+
 
 }

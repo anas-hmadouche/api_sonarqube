@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class JobExportExcel implements Job {
+    public String nature;
+    public String portfolio;
+    public String createdBefore;
+    public String createdAfter;
 
     @Override
     public void execute(JobExecutionContext context) {
@@ -28,14 +32,14 @@ public class JobExportExcel implements Job {
             // Récupérer le chemin du fichier data.json
             File currentDirFile = new File(".");
             String helper = currentDirFile.getAbsolutePath();
-            String res = mapIssueParams.readJsonFromFile(helper + "\\config\\data.json");
+            String res = mapIssueParams.readJsonFromFile(helper + "\\config\\baseline.json");
             // convertir le contenu json à une liste des paramètres
             List<Parameters> paramsList = mapIssueParams.convert(res);
 
             IssueService issueService=new IssueService();
             paramsList.stream().map((param)->{
                 try {
-                    Issue issue=issueService.getIssue(param);
+                    Issue issue=issueService.getIssue(param, "", nature, createdBefore, createdAfter);
                     if (issue!=null)
                     issueList.add(issue);
                 } catch (ParseException e) {

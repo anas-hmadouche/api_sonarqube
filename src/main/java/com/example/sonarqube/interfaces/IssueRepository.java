@@ -14,13 +14,18 @@ import java.util.Optional;
 @Repository
 public interface IssueRepository extends MongoRepository<Issue, String> {
 
+    List<Issue> findIssueById(String id);
     List<Issue> findIssueByKey(String key);
 
-    List<Issue> findByIssueDetailsCreationDate(LocalDate creationDate);
+    List<Issue> findByIssueDetailsCreationDateLessThanEqual(LocalDate creationDate);
 
     List<Issue> findByIssueDetailsCreationDateBetween(LocalDate dateDebut, LocalDate dateFin);
 
     List<Issue> findIssueByProject(String project);
+
+    //List<Issue> findIssueByPortfolio(String portfolio);
+
+    List<Issue> findIssueByNature(String nature);
 
    /* Optional<Issue> findIssueByEmail(String email);
 

@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor @NoArgsConstructor @ToString
 public class IssueDetails {
-    private  String line;
+    private  String endLine;
     private  String message;
     private  String component;
     private  LocalDate creationDate;

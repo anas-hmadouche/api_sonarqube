@@ -11,17 +11,16 @@ public class Parameters {
     private String createdBefore = "";
     private String createdAfter = "";
     private String statuses = "";
+    private String projectName = "";
+    private String resolved = "";
 
     @Override
     public String toString() {
-        String parameter = "https://sonarqube.inria.fr/sonarqube/api/issues/search?" + getTypes() + getSeverities() + getProjectName()
-                + getCreatedAfter() + getCreatedBefore() + getStatuses()
+        String parameter = "https://sonarqube.inria.fr/sonarqube/api/issues/search?" + getTypes() + getSeverities()
+                 + getCreatedBefore() + getCreatedAfter() + getStatuses() + getProjectName()
                 + getResolved();
         return parameter;
     }
-
-    private String projectName = "";
-    private String resolved = "";
 
     private int position;
     private int positionColonne;

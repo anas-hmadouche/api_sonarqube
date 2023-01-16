@@ -13,6 +13,7 @@ import java.util.List;
 @ToString
 @Document(collection = "portfolios")
 public class Portfolio {
+
     private String name;
     private List<Project> projects;
 

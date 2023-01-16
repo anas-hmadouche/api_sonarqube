@@ -11,4 +11,5 @@ public interface IssueViewRepository extends MongoRepository<Issue, String> {
 
     @Query("select i from Issue i")
     List<IssueView> findAllIssueView();
+
 }

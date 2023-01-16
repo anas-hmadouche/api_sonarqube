@@ -14,4 +14,6 @@ public class IssueView {
     private  String severity;
     private  String type;
     private  String total;
+    private  String project;
+    private  String portfolio;
 }

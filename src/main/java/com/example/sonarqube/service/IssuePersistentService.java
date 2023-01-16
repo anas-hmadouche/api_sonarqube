@@ -30,17 +30,38 @@ public class IssuePersistentService {
     public Issue ajouterIssue(Issue issue){
         return issueRepository.insert(issue);
     }
+
+    public List<Issue> fetchIssueById(String id){
+
+        return issueRepository.findIssueById(id);
+    }
+
     public List<Issue> fetchIssueByKey(String key){
+
         return issueRepository.findIssueByKey(key);
     }
+
     public List<Issue> fetchIssueByCreationDate(String creationDate){
         LocalDate date = LocalDate.parse(creationDate);
-        return issueRepository.findByIssueDetailsCreationDate(date);
+        return issueRepository.findByIssueDetailsCreationDateLessThanEqual(date);
     }
     public List<Issue> fetchIssueByCreationDateBetween(String dateDebut1, String dateFin1){
         LocalDate dateDebut = LocalDate.parse(dateDebut1);
         LocalDate dateFin = LocalDate.parse(dateFin1);
         return issueRepository.findByIssueDetailsCreationDateBetween(dateDebut, dateFin);
     }
+    public List<Issue> fetchIssueByNature(String nature){
+        return issueRepository.findIssueByNature(nature);
+    }
+
+    public List<Issue> fetchIssueByProject(String project){
+        return issueRepository.findIssueByProject(project);
+    }
+
+   /* public List<Issue> fetchIssueByPortfolio(String portfolio){
+        return issueRepository.findIssueByPortfolio(portfolio);
+    }*/
+
+
 
 }

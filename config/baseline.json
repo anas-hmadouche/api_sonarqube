@@ -1,0 +1,87 @@
+[
+  {
+  "types":"types=BUG",
+  "severities":"&severities=CRITICAL",
+  "createdBefore":"&createdBefore=",
+  "createdAfter":"",
+  "statuses":"",
+  "projectName":"&componentKeys=cardamom:mmg:github:develop",
+  "resolved":"&resolved=false",
+  "position":5,
+  "positionColonne":3
+},
+
+{
+
+"types":"types=BUG",
+"severities":"&severities=MAJOR",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":6,
+"positionColonne":3
+},
+
+{
+
+"types":"types=BUG",
+"severities":"&severities=BLOCKER",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":7,
+"positionColonne":3
+},
+
+{
+"types":"types=VULNERABILITY",
+"severities":"&severities=BLOCKER",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":8,
+"positionColonne":3
+
+},
+{
+"types":"types=CODE_SMELL",
+"severities":"&severities=CRITICAL",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":9,
+"positionColonne":3
+},
+{
+
+"types":"types=CODE_SMELL",
+"severities":"&severities=MAJOR",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":10,
+"positionColonne":3
+},
+{
+"types":"types=CODE_SMELL",
+"severities":"&severities=BLOCKER",
+"createdBefore":"&createdBefore=",
+"createdAfter":"",
+"statuses":"",
+"projectName":"&componentKeys=cardamom:mmg:github:develop",
+"resolved":"&resolved=false",
+"position":11,
+"positionColonne":3
+
+}
+]

@@ -20,10 +20,16 @@ public class IssueService {
     public IssueService() {
     }
 
-    public Issue getIssue(Parameters param) throws ParseException {
+    public Issue getIssue(Parameters param, String pagination, String nature, String createdBefore, String createdAfter) throws ParseException {
         RestTemplate restTemplate = new RestTemplate();
-        String resultat = restTemplate.getForObject(param.toString(), String.class);
-
+        param.setCreatedBefore(param.getCreatedBefore() + createdBefore);
+        //param.setCreatedAfter(param.getCreatedAfter() + createdAfter);
+        //String p = String.valueOf(page);
+        //String ps = String.valueOf(pageSize);
+        String resultat = restTemplate.getForObject(param.toString() + pagination, String.class);
+        //String resultat = restTemplate.getForObject(param.toString() , String.class);
+        //System.out.println("***********" + param.toString() + "&p=" + p + "&ps=" + ps );
+        System.out.println("***********" + param.toString() + pagination + "**********"  );
         Issue issue = new Issue();
 
         // Transformer le resultat en format Json
@@ -40,24 +46,33 @@ public class IssueService {
         issue.setSeverity((String) issueObj.get("severity"));
         issue.setType((String) issueObj.get("type"));
         issue.setScope((String) issueObj.get("scope"));
+        issue.setProject((String) issueObj.get("project"));
+        issue.setNature(nature);
+        //issue.setPortfolio(portfolio);
+
         issue.setPosition(param.getPosition());
         issue.setPositionColonne(param.getPositionColonne());
-        System.out.println(".........................................................................");
-        System.out.println(issue);
+
+        /*System.out.println(".........................................................................");
+        System.out.println(issue);*/
 
         List<IssueDetails> listIssueDetails = new ArrayList<>();
 
         for(int i=0; i<jsonArray.size(); i++){
             IssueDetails issueDetails = new IssueDetails();
             JSONObject issueDetailsObj = (JSONObject) jsonArray.get(i);
-            String line = String.valueOf(issueDetailsObj.get("line"));
-            String message = (String) issueObj.get("message");
-            String component = (String) issueObj.get("component");
+            JSONObject textRange = (JSONObject) issueDetailsObj.get("textRange");
+            String endLine = "";
+            if(textRange!=null)
+             endLine = String.valueOf(textRange.get("endLine"));
+            System.out.println(endLine);
+            String message = (String) issueDetailsObj.get("message");
+            String component = (String) issueDetailsObj.get("component");
             String creationDate = (String) issueObj.get("creationDate");
             creationDate = creationDate.split("T")[0];
             String updateDate = (String) issueObj.get("updateDate");
             updateDate = updateDate.split("T")[0];
-            issueDetails.setLine(line);
+            issueDetails.setEndLine(endLine);
             issueDetails.setMessage(message);
             issueDetails.setComponent(component);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

@@ -15,12 +15,15 @@ import java.util.List;
 @Document(collection = "Issue")
 public class Issue {
 
+    private String id;
     private String key;
     private  String severity;
     private  String type;
     private  String scope;
     private  String total;
     private  String project;
+    //private  String portfolio;
+    private String nature;
     private List<IssueDetails> issueDetails;
     @JsonIgnore
     private int position;
